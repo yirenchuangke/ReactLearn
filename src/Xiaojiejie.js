@@ -17,7 +17,6 @@ export default class Xiaojiejie extends Component {
   };
   // 添加服务
   addList = () => {
-    console.log(1);
     if (this.state.inputValue) {
       this.setState({
         list: [...this.state.list, this.state.inputValue],
@@ -55,7 +54,7 @@ export default class Xiaojiejie extends Component {
             // >
             //   {item}------------{index}
             // </div>
-            <XiaojiejieItem key={index}></XiaojiejieItem>
+            <XiaojiejieItem key={index} content={item} index={index} deleteItem={this.deleteItem.bind(this)}/> 
           );
         })}
       </div>
