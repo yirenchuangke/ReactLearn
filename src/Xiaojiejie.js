@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style//Xiaojiejie.css";
+import XiaojiejieItem from './XiaojiejieItem';
 export default class Xiaojiejie extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +36,7 @@ export default class Xiaojiejie extends Component {
   render() {
     return (
       <div className="warp">
+        
         <div>
           <input
             type="text"
@@ -46,13 +48,14 @@ export default class Xiaojiejie extends Component {
         </div>
         {this.state.list.map((item, index) => {
           return (
-            <div
-              key={index}
-              onClick={this.deleteItem.bind(this, index)}
-              className="list"
-            >
-              {item}------------{index}
-            </div>
+            // <div
+            //   key={index}
+            //   onClick={this.deleteItem.bind(this, index)}
+            //   className="list"
+            // >
+            //   {item}------------{index}
+            // </div>
+            <XiaojiejieItem key={index}></XiaojiejieItem>
           );
         })}
       </div>
