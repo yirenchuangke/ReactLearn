@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style//Xiaojiejie.css";
-import XiaojiejieItem from './XiaojiejieItem';
+import XiaojiejieItem from "./XiaojiejieItem";
+
 export default class Xiaojiejie extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +11,9 @@ export default class Xiaojiejie extends Component {
     };
   }
   // 输入框变化的时候
-  inoutChange = (e) => {
+  inoutChange = () => {
     this.setState({
-      inputValue: e.target.value,
+      inputValue: this.inputRef.value,
     });
   };
   // 添加服务
@@ -35,13 +36,15 @@ export default class Xiaojiejie extends Component {
   render() {
     return (
       <div className="warp">
-        
         <div>
           <input
             type="text"
             value={this.state.inputValue}
             placeholder="请输入你想需要的服务"
             onChange={this.inoutChange}
+            ref={(input) => {
+              this.inputRef = input;
+            }}
           />
           <button onClick={this.addList}>增加服务</button>
         </div>
@@ -54,7 +57,12 @@ export default class Xiaojiejie extends Component {
             // >
             //   {item}------------{index}
             // </div>
-            <XiaojiejieItem key={index} content={item} index={index} deleteItem={this.deleteItem.bind(this)}/> 
+            <XiaojiejieItem
+              key={index}
+              content={item}
+              index={index}
+              deleteItem={this.deleteItem.bind(this)}
+            />
           );
         })}
       </div>
