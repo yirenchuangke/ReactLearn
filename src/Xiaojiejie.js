@@ -33,7 +33,28 @@ export default class Xiaojiejie extends Component {
       list: list,
     });
   };
+
+//   shouldComponentUpdate() {
+//     console.log("1shouldComponentUpdate---组件发生改变前执行");
+//     return true;
+//   }
+//   componentWillUpdate() {
+//     console.log(
+//       "2componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行"
+//     );
+//   }
+//   componentDidUpdate(){
+//     console.log('4componentDidUpdate----组件更新之后执行')
+// }
+  // componentWillMount() {
+  //   console.log("componentWillMounts----组件将要挂载到页面的时刻");
+  // }
+  // componentDidMount() {
+  //   console.log("componentDidMount----组件挂载完成的时刻执行");
+  // }
   render() {
+    console.log("3render---组件挂载中.......");
+
     return (
       <div className="warp">
         <div>
@@ -50,13 +71,6 @@ export default class Xiaojiejie extends Component {
         </div>
         {this.state.list.map((item, index) => {
           return (
-            // <div
-            //   key={index}
-            //   onClick={this.deleteItem.bind(this, index)}
-            //   className="list"
-            // >
-            //   {item}------------{index}
-            // </div>
             <XiaojiejieItem
               key={index}
               content={item}

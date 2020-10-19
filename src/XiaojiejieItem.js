@@ -10,7 +10,11 @@ export default class XiaojiejieItem extends Component {
     console.log(this.props.index, "撩拨啦小姐姐");
     this.props.deleteItem(this.props.index);
   };
+  componentWillReceiveProps(){
+    console.log('componentWillReceiveProps')
+}
   render() {
+    console.log("33render---组件挂载中.......");
     return (
       <div className="warps">
         <div className="list" onClick={this.handleClick}>
