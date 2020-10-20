@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./style//Xiaojiejie.css";
 import XiaojiejieItem from "./XiaojiejieItem";
 import axios from "axios";
+import {CSSTransition , TransitionGroup} from 'react-transition-group'
 export default class Xiaojiejie extends Component {
   constructor(props) {
     super(props);
@@ -63,16 +64,26 @@ export default class Xiaojiejie extends Component {
           />
           <button onClick={this.addList}>增加服务</button>
         </div>
+        <TransitionGroup>
         {this.state.list.map((item, index) => {
           return (
+            <CSSTransition
+            timeout={1000}
+            classNames='boss-text'
+            unmountOnExit
+            appear={true}
+            key={index+item}  
+        >
             <XiaojiejieItem
               key={index}
               content={item}
               index={index}
               deleteItem={this.deleteItem.bind(this)}
             />
+            </CSSTransition>
           );
         })}
+        </TransitionGroup>
       </div>
     );
   }
