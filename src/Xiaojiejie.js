@@ -1,15 +1,29 @@
 import React, { Component } from "react";
 import "./style//Xiaojiejie.css";
 import XiaojiejieItem from "./XiaojiejieItem";
-
+import axios from "axios";
 export default class Xiaojiejie extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputValue: "",
-      list: ["头部按摩", "精油推背"],
+      list: [],
     };
   }
+  componentDidMount() {
+    axios
+      .get("https://www.easy-mock.com/mock/5f8ee9c8bcca63581f44c27c/ReactDemo/xiaojiejie")
+      .then((res) => {
+        console.log(res.data.data);
+        this.setState({
+          list:res.data.data
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   // 输入框变化的时候
   inoutChange = () => {
     this.setState({
@@ -34,10 +48,7 @@ export default class Xiaojiejie extends Component {
     });
   };
 
- 
   render() {
-   
-
     return (
       <div className="warp">
         <div>
