@@ -10,15 +10,19 @@ export default class XiaojiejieItem extends Component {
     console.log(this.props.index, "撩拨啦小姐姐");
     this.props.deleteItem(this.props.index);
   };
-  componentWillReceiveProps(){
-    console.log('componentWillReceiveProps')
-}
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.content !== this.props.content) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   render() {
-    console.log("33render---组件挂载中.......");
+    console.log("child-render");
     return (
       <div className="warps">
         <div className="list" onClick={this.handleClick}>
-    {this.props.index}號{this.props.avname}為您{this.props.content}
+          {this.props.index}號{this.props.avname}為您{this.props.content}
         </div>
       </div>
     );
@@ -30,6 +34,6 @@ XiaojiejieItem.propTypes = {
   deleteItem: PropTypes.func,
   index: PropTypes.number,
 };
-XiaojiejieItem.defaultProps={
-  avname:"蒼井空"
-}
+XiaojiejieItem.defaultProps = {
+  avname: "蒼井空",
+};
