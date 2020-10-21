@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+ 
 import TodoListUI from "./TodoListUI";
 import store from "./store/index.js";
 
@@ -7,6 +7,7 @@ import {
   changeInputAction,
   addItemAction,
   deleteItemAction,
+  getTodoList
 } from "./store/actionCreators";
 export default class TodoList extends Component {
   constructor(props) {
@@ -14,6 +15,11 @@ export default class TodoList extends Component {
     this.state = store.getState();
 
     store.subscribe(this.storeChange); //订阅Redux的状态
+  }
+
+  componentDidMount() {
+    store.dispatch(getTodoList())
+    
   }
 
   storeChange = () => {
